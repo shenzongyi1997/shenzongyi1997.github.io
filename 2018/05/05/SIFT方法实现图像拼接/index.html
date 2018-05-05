@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>SIFT | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这是视频处理课程上的一个作业，说起来是有点难的，但我感觉还挺有意思的，写一写免得自己以后忘了。Scale-invariant feature transform，尺度无关特征变换，可以说是很棒的一个东西了。尺度，在我看来就是大小和清晰度的结合，尺度用来描述这个物体离观察者有多远。因为在日常生活中，近大远小，以及远处的东西一般要模糊一点，用尺度来描述物体离观察者的距离还是不错的。在计算机中，可以用“">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SIFT">
+<meta property="og:url" content="http://yoursite.com/2018/05/05/SIFT方法实现图像拼接/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这是视频处理课程上的一个作业，说起来是有点难的，但我感觉还挺有意思的，写一写免得自己以后忘了。Scale-invariant feature transform，尺度无关特征变换，可以说是很棒的一个东西了。尺度，在我看来就是大小和清晰度的结合，尺度用来描述这个物体离观察者有多远。因为在日常生活中，近大远小，以及远处的东西一般要模糊一点，用尺度来描述物体离观察者的距离还是不错的。在计算机中，可以用“">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-05T12:08:54.437Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SIFT">
+<meta name="twitter:description" content="这是视频处理课程上的一个作业，说起来是有点难的，但我感觉还挺有意思的，写一写免得自己以后忘了。Scale-invariant feature transform，尺度无关特征变换，可以说是很棒的一个东西了。尺度，在我看来就是大小和清晰度的结合，尺度用来描述这个物体离观察者有多远。因为在日常生活中，近大远小，以及远处的东西一般要模糊一点，用尺度来描述物体离观察者的距离还是不错的。在计算机中，可以用“">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">Dean</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>SIFT</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-circle-512.png">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Dean</span>
+                <span class="post-date sub-title">at: 2018-05-05</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <p>这是视频处理课程上的一个作业，说起来是有点难的，但我感觉还挺有意思的，写一写免得自己以后忘了。<br>Scale-invariant feature transform，尺度无关特征变换，可以说是很棒的一个东西了。<br>尺度，在我看来就是大小和清晰度的结合，尺度用来描述这个物体离观察者有多远。因为在日常生活中，近大远小，以及远处的东西一般要模糊一点，用尺度来描述物体离观察者的距离还是不错的。在计算机中，可以用“高斯金字塔”这种结构来模仿不同尺度下的物体，其中大小用图片分辨率实现，模糊清晰可以用高斯滤波实现。<br>顾名思义，SIFT就是想要找到两幅图像中和尺度无关的特征。<br>比如我离一辆车10米拍了一张照片，和离同一辆车100米拍了一张照片，而且还有一定程度的旋转平移。我们寄希望于寻求一种算法，能找出两章图片中相同的特征。<br>更有甚者，如果两章照片照了一个物体的不同部分，根据重叠部分的特征，可以将这两个图片拼接起来。</p>
+<h1 id="什么样的点可以作为特征点呢？"><a href="#什么样的点可以作为特征点呢？" class="headerlink" title="什么样的点可以作为特征点呢？"></a>什么样的点可以作为特征点呢？</h1><p>Harris角点，角点是梯度变化最快的地方。<br></p>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+            <div id="disqus_thread" style="width: 80%; margin: 0 auto;"></div>
+                <script>
+
+                    /**
+                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                     var disqus_config = function () {
+                     this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                     this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                     };
+                     */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://haojen.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2018
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
