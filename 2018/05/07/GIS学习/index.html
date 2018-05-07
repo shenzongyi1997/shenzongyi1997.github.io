@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>GIS学习 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言这学期又选了辛老师的课。。。。。连续三个学期鏖战亚利欣，完全不虚，大学最熟悉的两个老师是两个最“可怕”的老师orz  GISGIS全程是地理信息系统，geography information system,简单一点说就是地图，最常见的就是谷歌地球，还有百度地图高德地图等等，非常有用，有一系列的衍生应用。比如，城市规划，滴滴打车，外卖，快递……我以前一直觉得地图很神奇，不过其实难者不会，会者不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GIS学习">
+<meta property="og:url" content="http://yoursite.com/2018/05/07/GIS学习/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言这学期又选了辛老师的课。。。。。连续三个学期鏖战亚利欣，完全不虚，大学最熟悉的两个老师是两个最“可怕”的老师orz  GISGIS全程是地理信息系统，geography information system,简单一点说就是地图，最常见的就是谷歌地球，还有百度地图高德地图等等，非常有用，有一系列的衍生应用。比如，城市规划，滴滴打车，外卖，快递……我以前一直觉得地图很神奇，不过其实难者不会，会者不">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/12.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/0.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/7.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/8.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/9.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/10.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/07/GIS学习/11.png">
+<meta property="og:updated_time" content="2018-05-07T12:57:43.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GIS学习">
+<meta name="twitter:description" content="前言这学期又选了辛老师的课。。。。。连续三个学期鏖战亚利欣，完全不虚，大学最熟悉的两个老师是两个最“可怕”的老师orz  GISGIS全程是地理信息系统，geography information system,简单一点说就是地图，最常见的就是谷歌地球，还有百度地图高德地图等等，非常有用，有一系列的衍生应用。比如，城市规划，滴滴打车，外卖，快递……我以前一直觉得地图很神奇，不过其实难者不会，会者不">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/07/GIS学习/12.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">Dean</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>GIS学习</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-circle-512.png">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Dean</span>
+                <span class="post-date sub-title">at: 2018-05-07</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这学期又选了辛老师的课。。。。。连续三个学期鏖战亚利欣，完全不虚，大学最熟悉的两个老师是两个最“可怕”的老师orz</p>
+<p><img src="/2018/05/07/GIS学习/12.jpg" alt="封面"></p>
+<h1 id="GIS"><a href="#GIS" class="headerlink" title="GIS"></a>GIS</h1><p>GIS全程是地理信息系统，geography information system,简单一点说就是地图，最常见的就是谷歌地球，还有百度地图高德地图等等，非常有用，有一系列的衍生应用。比如，城市规划，滴滴打车，外卖，快递……<br>我以前一直觉得地图很神奇，不过其实难者不会，会者不难，只要学习了GIS，就知道地图不是那么的高深了。<br>为啥要学GIS不调用百度地图现成的API之类的呢，据我们强悍牛x又有钱的辛老师所说，公交系统的电脑是不允许联网的，这个时候百度地图就失去了用武之地，只能依靠GIS来完成地图的显示了。</p>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="图层"><a href="#图层" class="headerlink" title="图层"></a>图层</h2><p>图层其实挺常见的，在PS里也有图层一说。甚至在PPT里，选取一章图片，都有“浮到顶层”，“沉到底层”之类的说法。这也是图层的一个体现。图层是为了方便管理地图上的信息，将具有相似性的特征物体作为一个图层统一管理。比如，一个地图上有两个图层，一个是街道，一个是建筑，我如果想对所有的街道加上标注直接对图层修改就可以了，可以应用到这个图层上的所有物体。如果每一个物体都各自为战，那么管理器来将会是非常麻烦的一件事情。这其实是很好的一个思想，比如编程语言里的类，也是为了方便管理相似的东西，每当需要用的时候，我们只要实例化一个类就可以了，最主要的原则就是减小重复编程，为我们服务。</p>
+<h2 id="矢量-空间数据"><a href="#矢量-空间数据" class="headerlink" title="矢量(空间数据)"></a>矢量(空间数据)</h2><p>GIS里的空间数据分为点、线、面三种类型。对应着point,line,polyline。他们最主要的特点就是经纬度，点好理解，每一个点对应一对经纬度。我以前一直很好奇线和面是怎么存储的，因为在我看来存储一个点需要2个int类型数据，那么一条线有无数个点，存储无数组经纬度？不过其实在计算机里，线和面只不过对应着一组点而已，显示的时候把这些点按照顺序连起来就行。当然不可否认的是这样做会有精度丢失，但是与其带来的好处相比，它几乎成了唯一的选择。</p>
+<h2 id="额外的一些要素"><a href="#额外的一些要素" class="headerlink" title="额外的一些要素"></a>额外的一些要素</h2><p>marker标注，显示某些地区的信息</p>
+<p>popup弹出提示</p>
+<h1 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h1><p><img src="/2018/05/07/GIS学习/0.png" alt="过程"></p>
+<h2 id="添加图层，显示图层，转换shp文件"><a href="#添加图层，显示图层，转换shp文件" class="headerlink" title="添加图层，显示图层，转换shp文件"></a>添加图层，显示图层，转换shp文件</h2><p>最基础的办法就是直接把geoserver.war给拷贝到tomcat的webapps目录下，然后直接运行tomcat，访问geoserver就可以了，就像访问一个项目一样，geoserver良心的一塌糊涂<br><img src="/2018/05/07/GIS学习/1.png" alt="geoserver主界面"><br>然后用管理员用户密码登陆进去之后就会有一些预览的图层Layer，可以直接预览<br><img src="/2018/05/07/GIS学习/2.png" alt="geoserver主界面"><br><img src="/2018/05/07/GIS学习/3.png" alt="geoserver主界面"><br>直接就可以点击放大缩小等功能了，还挺有意思的。<br>如果要添加图层，先创建workspace(如果没有),在设定Store(如果没有)，然后将图层一层一层添加进去。如果需要还可以把layer给弄成layer group，一起显示。</p>
+<h2 id="用uDig美化地图"><a href="#用uDig美化地图" class="headerlink" title="用uDig美化地图"></a>用uDig美化地图</h2><p>我其实特别不喜欢这种图形化工具，但不得不说uDig还是很良心的。但我实在是感觉这不就是把代码给换成了点按钮吗，写代码我还能自动补全给点提示，这按钮万一给放在一个什么角落我哪知道它在哪。 不过，在有一些地方，图形化软件有着无可替代的优势，比如，需要添加点，线，面的时候，这种所见即所得的工具非常的有用，并且有利于观察物体相互之间的关系，而不是非常数据化的经纬度。</p>
+<h2 id="标注和popup，轨迹"><a href="#标注和popup，轨迹" class="headerlink" title="标注和popup，轨迹"></a>标注和popup，轨迹</h2><p>标注其实很简单，在Geoserver里面就是一个类，把他加到图层里就完了。还能显示popupp，popup就是你点一个弹出附加信息。还可以把图标给换成你自己的图片，随便设在什么地方。<br><img src="/2018/05/07/GIS学习/4.png" alt="无标注"><br><img src="/2018/05/07/GIS学习/5.png" alt="有标注"></p>
+<h2 id="地图数据进mysql数据库"><a href="#地图数据进mysql数据库" class="headerlink" title="地图数据进mysql数据库"></a>地图数据进mysql数据库</h2><p>这个主要看咋设计表。无论怎么设计，总归需要有经纬度的。如果放在数据库里，就可以有很多有趣的操作了，比如查询，比如标出最近的信息点，比如测距侧面积<br><img src="/2018/05/07/GIS学习/6.png" alt="名字查询"><br><img src="/2018/05/07/GIS学习/7.png" alt="经纬度查询"><br><img src="/2018/05/07/GIS学习/8.png" alt="测距"><br><img src="/2018/05/07/GIS学习/9.png" alt="测面积"></p>
+<h2 id="点线面交互"><a href="#点线面交互" class="headerlink" title="点线面交互"></a>点线面交互</h2><p>自己画点线面放在数据库，还可以存东西<br><img src="/2018/05/07/GIS学习/10.png" alt="测面积"></p>
+<h2 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h2><p>完整的模式其实应该是这样，服务器端有tomcat，并且有geoserver所对应的数据，客户端的程序只需要网页，网页里面的链接指向服务器里的数据，但是如果你想在自己的一台电脑上体验完整过程的话，可以装一个虚拟机，在虚拟机里安装tomcat和geoserver，然后在宿主机访问虚拟机的ip和端口，把虚拟机当做一个服务器来用，我这个大作业就是这么干的。还是不错的，不过要记得，虚拟机的防火墙需要关闭，并且宿主机访问的速度可能会稍稍有些慢。<br>最后还是稳稳的<br><img src="/2018/05/07/GIS学习/11.png" alt="整合"><br>具体的细节问题，以及我踩到的不少坑，可能会在后期陆陆续续加上。今天先到这儿吧。</p>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+            <div id="disqus_thread" style="width: 80%; margin: 0 auto;"></div>
+                <script>
+
+                    /**
+                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                     var disqus_config = function () {
+                     this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                     this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                     };
+                     */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://haojen.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2018
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
