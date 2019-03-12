@@ -6,22 +6,19 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   
-  <title>NUS—_SWS申请踩过的坑 | Hexo</title>
+  <title>GPGPU-Sim | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自己申请NUS SWS本着自己对NUS的热爱，想申请暑假的SWS，这个项目一出来，周围的朋友就推荐给了我。在寒假自己完成了网申，因为成绩和履历都不错，所以直接通过了NUS老师的筛选。 想起去年国际周听Leong Hong Wai老师的课程，印象非常好，对NUS有一种只会做。 联系到老师之后，有很耐心很温柔的Liv老师帮助，完成了一系列文件的提交，然后就到缴费环节。发现四川大学和NUS有合作，所以需">
+  <meta name="description" content="最近要挂了，写一点东西来记录自己这么多天来踩的坑。 就今天来说： 字符串和指针某些用途不知为何，我在某些地方尝试使用了char a[] = “xxx”,然后在传递指针的时候直接传递a，传递成功了，但是这样子的数据在有文件流输入的时候突然就失败。 然后使用char * a = “xxx”这样的形式，从而完成 在编译的时候，这样会报从定值字符串到char的警告，可以忽略。我当时因为想优化这个东西，把所">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NUS—_SWS申请踩过的坑">
-<meta property="og:url" content="http://yoursite.com/2018/05/12/NUS—-SWS申请踩过的坑/index.html">
+<meta property="og:title" content="GPGPU-Sim">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/GPGPU-Sim/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="自己申请NUS SWS本着自己对NUS的热爱，想申请暑假的SWS，这个项目一出来，周围的朋友就推荐给了我。在寒假自己完成了网申，因为成绩和履历都不错，所以直接通过了NUS老师的筛选。 想起去年国际周听Leong Hong Wai老师的课程，印象非常好，对NUS有一种只会做。 联系到老师之后，有很耐心很温柔的Liv老师帮助，完成了一系列文件的提交，然后就到缴费环节。发现四川大学和NUS有合作，所以需">
+<meta property="og:description" content="最近要挂了，写一点东西来记录自己这么多天来踩的坑。 就今天来说： 字符串和指针某些用途不知为何，我在某些地方尝试使用了char a[] = “xxx”,然后在传递指针的时候直接传递a，传递成功了，但是这样子的数据在有文件流输入的时候突然就失败。 然后使用char * a = “xxx”这样的形式，从而完成 在编译的时候，这样会报从定值字符串到char的警告，可以忽略。我当时因为想优化这个东西，把所">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/05/12/NUS—-SWS申请踩过的坑/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/05/12/NUS—-SWS申请踩过的坑/1.jpg">
-<meta property="og:updated_time" content="2018-05-12T13:25:16.470Z">
+<meta property="og:updated_time" content="2019-03-12T12:15:53.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NUS—_SWS申请踩过的坑">
-<meta name="twitter:description" content="自己申请NUS SWS本着自己对NUS的热爱，想申请暑假的SWS，这个项目一出来，周围的朋友就推荐给了我。在寒假自己完成了网申，因为成绩和履历都不错，所以直接通过了NUS老师的筛选。 想起去年国际周听Leong Hong Wai老师的课程，印象非常好，对NUS有一种只会做。 联系到老师之后，有很耐心很温柔的Liv老师帮助，完成了一系列文件的提交，然后就到缴费环节。发现四川大学和NUS有合作，所以需">
-<meta name="twitter:image" content="http://yoursite.com/2018/05/12/NUS—-SWS申请踩过的坑/2.jpg">
+<meta name="twitter:title" content="GPGPU-Sim">
+<meta name="twitter:description" content="最近要挂了，写一点东西来记录自己这么多天来踩的坑。 就今天来说： 字符串和指针某些用途不知为何，我在某些地方尝试使用了char a[] = “xxx”,然后在传递指针的时候直接传递a，传递成功了，但是这样子的数据在有文件流输入的时候突然就失败。 然后使用char * a = “xxx”这样的形式，从而完成 在编译的时候，这样会报从定值字符串到char的警告，可以忽略。我当时因为想优化这个东西，把所">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -139,13 +136,13 @@
     <div class="container post-box">
         <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
             <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
-                <strong>NUS—_SWS申请踩过的坑</strong>
+                <strong>GPGPU-Sim</strong>
             </h1>
             
             <div class="is-flex align-center">
                 <img class="post-avatar" src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-circle-512.png">
                 <span style="padding:0 10px;"> <span class="sub-title">By</span> Dean</span>
-                <span class="post-date sub-title">at: 2018-05-12</span>
+                <span class="post-date sub-title">at: 2019-03-12</span>
             </div>
             
                 <div>
@@ -154,23 +151,25 @@
             
         </div>
         <div class="content" style="overflow: auto">
-            <h3 id="自己申请NUS-SWS"><a href="#自己申请NUS-SWS" class="headerlink" title="自己申请NUS SWS"></a>自己申请NUS SWS</h3><pre><code>本着自己对NUS的热爱，想申请暑假的SWS，这个项目一出来，周围的朋友就推荐给了我。在寒假自己完成了网申，因为成绩和履历都不错，所以直接通过了NUS老师的筛选。
-想起去年国际周听Leong Hong Wai老师的课程，印象非常好，对NUS有一种只会做。
-联系到老师之后，有很耐心很温柔的Liv老师帮助，完成了一系列文件的提交，然后就到缴费环节。发现四川大学和NUS有合作，所以需要等待川大的批准。哎，漫长的等待开始了。
-</code></pre><h3 id="学校通知面试"><a href="#学校通知面试" class="headerlink" title="学校通知面试"></a>学校通知面试</h3><pre><code>学校面试前一天通知要面试。面试当天穿着大裤衩，顶着油头就过去了，面试一共持续了不到5分钟，什么专业问题都没问。
-第二天成绩出来，自己不在公费生里面，但是我的成绩明明比里面绝大多数人都好的多，非常不能理解。
-可能是撞上墙了吧，自己傲气的心终于遇到了无法轻易越过的一个挫折，要多花家里2w多的钱来完成这个项目，心在滴血。
-</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><pre><code>总结我的失败，教训有这些:
-</code></pre><h4 id="心高气傲"><a href="#心高气傲" class="headerlink" title="心高气傲"></a>心高气傲</h4><pre><code>申请的人都很强，自己因为成绩和科研经历有些天下老子第一的傲气，这次碰壁算是一个很大的失败，有傲骨但不能傲气。
-</code></pre><h4 id="仪容气质"><a href="#仪容气质" class="headerlink" title="仪容气质"></a>仪容气质</h4><pre><code>面试不能再穿大裤衩，顶着油头去了，前一天一定要洗个头。
-</code></pre><h4 id="说话方式"><a href="#说话方式" class="headerlink" title="说话方式"></a>说话方式</h4><pre><code>面试过程中我可能过于注重表达自己，只是回答了老师的问题，可能没有从老师的角度来思考他们想要听到什么。
-</code></pre><p><img src="/2018/05/12/NUS—-SWS申请踩过的坑/2.jpg" alt="脑海中的苦味糖"></p>
-<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><pre><code>emmm希望自己能吸取教训。
-虽然说自己的问题很大，但我总觉得保持自己的棱角是有必要的。我就是我，如果我为了一些利益连本心都改变了，伪装成了习惯，那么我如果有幸在以后的日子里遇到了能接纳本来的我的人，而错过了，那么不是很亏吗。
-现在付出的两万多块钱，是我青春的遗憾。一个人最无助的时候就是在他还没有能力经济独立的时候，看到了适合他的机会。我会用实力狠狠地打看不起我的人的脸，终有一天我要证明，错过我是你们犯下的最大的错误。
-更何况，我依然坚信学术风骨，我更相信内在的力量而非外在。所以我要离开这个地方，以前对川大总觉得是一个包容我成长的地方，现在它已经不再包容我了，那么我也是时候准备离开了。
-毕业后我可能会头也不回地离开这儿，希望到时候我能昂首挺胸，心中没有后悔。加油，亲爱的自己。
-</code></pre><p><img src="/2018/05/12/NUS—-SWS申请踩过的坑/1.jpg" alt="自拍"></p>
+            <p>最近要挂了，写一点东西来记录自己这么多天来踩的坑。</p>
+<p>就今天来说：</p>
+<h3 id="字符串和指针某些用途"><a href="#字符串和指针某些用途" class="headerlink" title="字符串和指针某些用途"></a>字符串和指针某些用途</h3><p>不知为何，我在某些地方尝试使用了char a[] = “xxx”,然后在传递指针的时候直接传递a，传递成功了，但是这样子的数据在有文件流输入的时候突然就失败。</p>
+<p>然后使用char * a = “xxx”这样的形式，从而完成</p>
+<p>在编译的时候，这样会报从定值字符串到char的警告，可以忽略。我当时因为想优化这个东西，把所有的都改写成了数组形式，编译没问题，但是后来就发现这个文件名变成了乱码，类似于”\300\257”这些倒头玩意儿，坑。怪不得GPGPU-Sim原作者写的从来都是直接指针，报警告也不用数组，不知道为啥。</p>
+<p>个人猜测可能和cache有关。</p>
+<h3 id="字符串与布尔变量"><a href="#字符串与布尔变量" class="headerlink" title="字符串与布尔变量"></a>字符串与布尔变量</h3><p>最简单的样例</p>
+<p>‘’’</p>
+<p>#include<iostream> </iostream></p>
+<p>#include<fstream><br>using namespace std;<br>void exe(bool flag)<br>{<br>​    if(flag)<br>​    {<br>​        cout&lt;&lt;”bool, right!”&lt;&lt;endl;<br>​    }<br>}<br>void exe(string content)<br>{<br>​    cout&lt;&lt;content&lt;&lt;endl;<br>}<br>int main(void)<br>{<br>​    char s1[] = “All that matters is time.”;<br>​    exe(s1);<br>​<br>}</fstream></p>
+<p>‘’’</p>
+<p>nnd字符串居然这么容易就被当成布尔变量了，丢人的string，你看别人重载就不找属于自己的函数了？</p>
+<h3 id="n与-r-n"><a href="#n与-r-n" class="headerlink" title="\n与\r\n"></a>\n与\r\n</h3><p>这个东西只有在windows于linux下互相传输文本文件时候会出现，事实上windows下的换行是\r\n，linux下是\n，因为\r代表的意思是回到一行的开始，所以你如果用一个windows下的文本直接在linux下cat是会出现沙雕乱码的，这个也把我给搞的不行。</p>
+<h3 id="编译链接"><a href="#编译链接" class="headerlink" title="编译链接"></a>编译链接</h3><p>这个其实是很难的一部分知识，发现国内很多学校都没有涉及。。。。</p>
+<p>最简单的，所有.cc文件，或者.c，如果用g++/gcc进行编译的话，过程会先产生.o文件，然后链接所有.o文件生成二进制可执行文件，看起来很简单，但是有很多变种。</p>
+<p>将大量.o连接起来生成静态库.a或者动态库.so，这其实都是很坑的，因为你必须弄清楚里面的依赖关系，不然你稍微换个次序，编译就会报错，<a href="https://eli.thegreenplace.net/2013/07/09/library-order-in-static-linking，这个是G++进行连接的操作逻辑，我想的是为啥不设成所有的扫描完了再扫描一遍，万一俩库相互依赖那不是凉了？" target="_blank" rel="noopener">https://eli.thegreenplace.net/2013/07/09/library-order-in-static-linking，这个是G++进行连接的操作逻辑，我想的是为啥不设成所有的扫描完了再扫描一遍，万一俩库相互依赖那不是凉了？</a></p>
+<p>在编译过程中，如果你想添加头文件，从而让你的代码可以用更多已经被定义好的类，那你就必须在编译命令中加入-I语句，比如 -I\home\zongyi\GPGPU-Sim_dev-half2,否则你压根不能使用其他类，而且报错是在编译阶段不是在连接阶段，这不坑吗，比如这样。</p>
+<p>我有一个文件夹，叫hello,里面包含了很多.o文件，这些.o文件是可以自己形成闭环并且拥有大量很实用的代码的，我想使用这里面的代码。我不可以直接在代码里使用，这样编译会出错。所以，我必须要知道他们的头文件和实现位置，从而一个一个Include进来，这样我的代码才能通过编译。虽然通过编译之后，我可以直接连接这些.o文件而无需再次生成他们。</p>
+<p>常用的命令，比如nm，里面可以看到很多U，T之类的，但是有时候即便你要使用的东西是T，但是这个.o里包含了U，你就必须得找到他包含的，这 也是个坑。</p>
 
         </div>
         <div class="post-reply">
