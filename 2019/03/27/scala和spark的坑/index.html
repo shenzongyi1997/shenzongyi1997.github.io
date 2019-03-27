@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="SBT,Maven,IDEA我比较偏爱IDEA，所以使用IDEA来书写scala 一开始不是特别了解SBT,Maven,IDEA项目的区别，因为都差不多，而且都可以运行scala，所以我一开始用了SBT，然后发现这个东西自动默认了，我只要source code改动一下，他马上就会自己重新运行从而显示结果，这听起来很好，但是坑爹的是，我的电脑卡的不行，所以我后来直接用IDEA了 使用IDEA，坑的地">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-27T12:33:17.401Z">
+<meta property="og:updated_time" content="2019-03-27T13:26:28.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scala和spark的坑">
 <meta name="twitter:description" content="SBT,Maven,IDEA我比较偏爱IDEA，所以使用IDEA来书写scala 一开始不是特别了解SBT,Maven,IDEA项目的区别，因为都差不多，而且都可以运行scala，所以我一开始用了SBT，然后发现这个东西自动默认了，我只要source code改动一下，他马上就会自己重新运行从而显示结果，这听起来很好，但是坑爹的是，我的电脑卡的不行，所以我后来直接用IDEA了 使用IDEA，坑的地">
@@ -162,6 +162,17 @@
 <p>有毛病把！！！！</p>
 <p>就是说，你如果在main函数里就写点println这种语句，是没问题的，可以正常运行<br>一旦你用到有关spark的，比如conf，立马报错</p>
 <p>神经病！</p>
+<h3 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h3><p>Spark似乎默认了需要HDFS，所以nnd必须要hadoop</p>
+<p>然而hadoop不支持windows啊！</p>
+<p>不过，找到了一种方法，</p>
+<p><a href="https://github.com/srccodes/hadoop-common-2.2.0-bin" target="_blank" rel="noopener">https://github.com/srccodes/hadoop-common-2.2.0-bin</a></p>
+<p>github真是降临人间的天使，有人帮我们写好了hdfs在windows下的支持，只要把这个解压缩之后的根目录设置成你Hadoop的根目录就OK，最好直接设在程序里不要去改环境变量</p>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>神经病吧分布式就是这点不好，根本没法调试，因为string还tm是RDD String</p>
+<p>只能.foreach(println(_))</p>
+<p>说起来，最好的方法还是在一个很小的子集上测试，，然后扩展到其他</p>
+<hr>
+<p>以上写于2019/03/27，都是踩得坑，居然才刚刚把环境配好，明天来填坑</p>
+<hr>
 
         </div>
         <div class="post-reply">
